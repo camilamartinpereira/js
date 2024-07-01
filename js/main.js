@@ -15,17 +15,33 @@ function elegirBanda() {
 
         let genero;
         while (true) {
-            genero = prompt("¿Cuál es tu género musical favorito? (rock, pop, alternativo)").toLowerCase();
-            if (genero === "rock" || genero === "pop" || genero === "alternativo") {
+            genero = prompt("¿Cuál es tu género musical favorito?\n1) rock\n2) pop\n3) alternativo");
+            genero = parseInt(genero);
+            if (!isNaN(genero) && genero >= 1 && genero <= 3) {
+    
+                switch (genero) {
+                    case 1:
+                        genero = "rock";
+                        break;
+                    case 2:
+                        genero = "pop";
+                        break;
+                    case 3:
+                        genero = "alternativo";
+                        break;
+                    default:
+                        genero = "";
+                        break;
+                }
                 break;
             } else {
-                alert("Por favor, introduce una opción válida: rock, pop, alternativo.");
+                alert("Por favor, introduce una opción válida: 1, 2, 3.");
             }
         }
 
         let banda = sugerirBanda(decada, genero);
 
-        alert("La banda que te sugerimos es: " + banda) + "¡Que la disfrutes!";
+        alert("La banda que te sugerimos es: " + banda + "\n¡Que la disfrutes!");
 
         while (true) {
             repetir = prompt("¿Quieres recibir otra sugerencia? (si, no)").toLowerCase();
@@ -37,7 +53,7 @@ function elegirBanda() {
         }
     } while (repetir === "si");
 
-    alert("¡Gracias por confiar en nosotros! Te esperamos pronto");
+    alert("¡Gracias por confiar en nosotros!\nTe esperamos pronto.");
 }
 
 function sugerirBanda(decada, genero) {
@@ -75,7 +91,7 @@ function sugerirBanda(decada, genero) {
         }
     }
 
-    return "No podemos sugerir una banda con la información proporcionada.";
+    return "No te podemos sugerir una banda con la información proporcionada.";
 }
 
 elegirBanda();
